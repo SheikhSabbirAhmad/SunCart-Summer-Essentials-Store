@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "name": "UV Protection Sunglasses",
+    "brand": "SunShade",
+    "price": 15,
+    "rating": 4.7,
+    "stock": 10,
+    "description": "Premium UV protection sunglasses designed to shield your eyes from harmful UVA and UVB rays. Features a lightweight yet durable frame, polarized lenses for reduced glare, and a stylish modern design suitable for beach outings, driving, and everyday summer wear.",
+    "image": "https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg",
+    "category": "Accessories"
+  },
+  {
+    "id": 2,
+    "name": "Beach Hat",
+    "brand": "SunnyWear",
+    "price": 12,
+    "rating": 4.5,
+    "stock": 20,
+    "description": "Wide brim beach hat crafted from breathable and lightweight materials to keep you cool under the sun. Offers excellent sun protection for your face and neck while adding a stylish touch to your summer outfit. Ideal for beach trips, vacations, and outdoor activities.",
+    "image": "https://images.pexels.com/photos/984619/pexels-photo-984619.jpeg",
+    "category": "Accessories"
+  },
+  {
+    "id": 3,
+    "name": "Summer T-Shirt",
+    "brand": "CoolFit",
+    "price": 18,
+    "rating": 4.6,
+    "stock": 25,
+    "description": "Comfortable and breathable cotton t-shirt perfect for hot summer days. Designed with moisture-wicking fabric to keep you cool and dry. Soft texture, modern fit, and versatile style make it ideal for casual wear, travel, and daily use.",
+    "image": "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg",
+    "category": "Clothing"
+  },
+  {
+    "id": 4,
+    "name": "Flip Flops",
+    "brand": "StepEasy",
+    "price": 10,
+    "rating": 4.3,
+    "stock": 30,
+    "description": "Lightweight and comfortable flip flops designed for all-day wear. Features a soft cushioned sole, non-slip grip, and durable straps. Perfect for beach outings, poolside relaxation, and casual summer activities.",
+    "image": "https://images.pexels.com/photos/19090/pexels-photo.jpg",
+    "category": "Footwear"
+  },
+  {
+    "id": 6,
+    "name": "Sunscreen SPF 50",
+    "brand": "SunGuard",
+    "price": 14,
+    "rating": 4.8,
+    "stock": 40,
+    "description": "High-performance SPF 50 sunscreen that provides broad-spectrum protection against harmful UV rays. Water-resistant formula suitable for all skin types. Helps prevent sunburn, premature aging, and skin damage while keeping your skin hydrated and protected during outdoor activities.",
+    "image": "https://images.pexels.com/photos/3685530/pexels-photo-3685530.jpeg",
+    "category": "Skincare"
+  },
+  {
+    "id": 8,
+    "name": "Water Bottle",
+    "brand": "HydroCool",
+    "price": 9,
+    "rating": 4.4,
+    "stock": 50,
+    "description": "Durable and reusable water bottle designed to keep you hydrated throughout the day. Made from BPA-free materials, leak-proof design, and easy to carry. Ideal for gym, travel, office, and outdoor summer activities.",
+    "image": "https://images.pexels.com/photos/1282278/pexels-photo-1282278.jpeg",
+    "category": "Lifestyle"
+  },
+  {
+    "id": 9,
+    "name": "Swim Goggles",
+    "brand": "AquaView",
+    "price": 11,
+    "rating": 4.2,
+    "stock": 22,
+    "description": "High-quality swim goggles with anti-fog lenses for clear underwater vision. Designed with adjustable straps and a comfortable seal to prevent water leakage. Perfect for swimming, diving, and pool training sessions.",
+    "image": "https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg",
+    "category": "Sports"
+  },
+  {
+    "id": 11,
+    "name": "Sun Cap",
+    "brand": "CapZone",
+    "price": 8,
+    "rating": 4.3,
+    "stock": 35,
+    "description": "Lightweight and breathable sun cap designed to provide protection from direct sunlight. Features an adjustable strap for a comfortable fit and a curved brim for better shade. Ideal for outdoor activities, sports, and casual wear.",
+    "image": "https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg",
+    "category": "Accessories"
+  },
+    {
+    "id": 12,
+    "name": "Beach Bag",
+    "brand": "CarryAll",
+    "price": 17,
+    "rating": 4.6,
+    "stock": 12,
+    "description": "Spacious beach bag for all your essentials.",
+    "image": "https://images.pexels.com/photos/346751/pexels-photo-346751.jpeg",
+    "category": "Accessories"
+  }
+]
