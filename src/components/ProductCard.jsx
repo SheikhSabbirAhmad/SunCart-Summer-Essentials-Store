@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card, Button } from "@heroui/react";
+import { Card, Button, Chip } from "@heroui/react";
 import { FaStar } from "react-icons/fa";
 
 const ProductCard = ({ product }) => {
@@ -23,6 +23,7 @@ const ProductCard = ({ product }) => {
           fill
           className="object-cover"
         />
+         <Chip size="sm" className="absolute right-2 top-2">{product.category}</Chip>
       </div>
 
       {/* INFO */}

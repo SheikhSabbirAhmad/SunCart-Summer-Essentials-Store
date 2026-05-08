@@ -12,7 +12,7 @@ const PopularProducts = async () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold my-5">Popular Products</h1>
+      <h1 className="text-3xl font-bold my-5">Popular Products</h1>
 
       <div className="grid grid-cols-3 gap-5">
         {popularProducts.map((product) => (
