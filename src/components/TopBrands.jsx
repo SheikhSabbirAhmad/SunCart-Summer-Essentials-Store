@@ -32,11 +32,11 @@ const TopBrands = () => {
     <section className="py-20 bg-gradient-to-b from-white to-[#f7f3ee]">
 
       <div className="text-center mb-14 px-4">
-        <p className="text-orange-500 uppercase tracking-[0.3em] text-sm font-semibold">
+        <p className="text-orange-500 uppercase tracking-[0.3em] text-xs font-semibold">
           Trusted Partners
         </p>
 
-        <h2 className="text-3xl md:text-4xl font-bold text-emerald-900 mt-2">
+        <h2 className="text-4xl md:text-5xl font-bold text-emerald-900 mt-2">
           Our Premium Brands
         </h2>
 
