@@ -2,6 +2,8 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CareTips from "@/components/CareTips";
+import TopBrands from "@/components/TopBrands";
 
 const OutfitFont = Outfit({
   subsets: ["latin"],
@@ -21,6 +23,8 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar/>
         <main className="max-w-7xl mx-auto">{children} </main>
+        <CareTips></CareTips>
+        <TopBrands></TopBrands>
         <Footer/>
 
       </body>
