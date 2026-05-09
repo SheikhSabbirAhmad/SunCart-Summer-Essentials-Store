@@ -48,7 +48,7 @@ const tips = [
 
 const CareTips = () => {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white via-orange-50/40 to-white overflow-hidden">
+    <section className="relative py-24 bg-gradient-to-b from-white via-orange-50/40 to-white overflow-hidden mt-7">
       <div className="absolute -top-24 -left-24 w-72 h-72 bg-orange-200 rounded-full blur-3xl opacity-30"></div>
       <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-emerald-200 rounded-full blur-3xl opacity-30"></div>
 

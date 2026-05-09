@@ -11,8 +11,9 @@ const PopularProducts = async () => {
   const popularProducts = products.slice(0, 3);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold my-5">Popular Products</h1>
+    <div className="mt-15">
+      <h1 className="text-3xl font-bold my-5 text-[#FF7A18]">Popular Products</h1>
+      
 
       <div className="grid grid-cols-3 gap-5">
         {popularProducts.map((product) => (

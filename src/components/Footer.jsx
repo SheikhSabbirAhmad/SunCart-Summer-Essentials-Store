@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#0f2a1d] text-white overflow-hidden">
+    <footer className="relative bg-[#0f2a1d] text-white overflow-hidden mt-15">
 
       {/* subtle background glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-9 via-green-700 to-teal-500 opacity-70 -z-10" />
