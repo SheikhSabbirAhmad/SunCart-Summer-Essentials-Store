@@ -12,10 +12,12 @@ import {
   TextField,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import { GrGoogle } from "react-icons/gr";
+import { toast } from "react-toastify";
 
 export default function SignUpPage() {
 
-    const router = useRouter()
+  const router = useRouter();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -25,20 +27,55 @@ export default function SignUpPage() {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    const {data, error} = await authClient.signUp.email({
-        name,
-        email,
-        password,
-        image,
-    })
-    
+    const { data, error } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+      image,
+    });
 
-    console.log({data, error})
+    console.log({ data, error });
 
-    if(!error) {
-        router.push('/')
+    if (error) {
+      toast.error("Signup failed. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+      return;
     }
 
+    if (data) {
+      toast.success("Account created successfully! Redirecting to sign in...", {
+        position: "top-right",
+        autoClose: 2500,
+        theme: "colored",
+      });
+
+      setTimeout(() => {
+        router.push("/signin");
+      }, 2000);
+    }
+  };
+
+  const handlGoogleSignUp = async () => {
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+      });
+
+      toast.success("Redirecting to Google sign up...", {
+        position: "top-right",
+        autoClose: 2000,
+        theme: "colored",
+      });
+    } catch (error) {
+      toast.error("Google sign up failed. Try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+    }
   };
 
   return (
@@ -66,7 +103,6 @@ export default function SignUpPage() {
             if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
               return "Please enter a valid email address";
             }
-
             return null;
           }}
         >
@@ -90,7 +126,6 @@ export default function SignUpPage() {
             if (!/[0-9]/.test(value)) {
               return "Password must contain at least one number";
             }
-
             return null;
           }}
         >
@@ -113,7 +148,15 @@ export default function SignUpPage() {
         </div>
       </Form>
 
+      <p className="text-center">Or</p>
 
+      <Button
+        onClick={handlGoogleSignUp}
+        variant="outline"
+        className={"w-full"}
+      >
+        <GrGoogle /> Sign In With Google
+      </Button>
     </Card>
   );
 }

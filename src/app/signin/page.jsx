@@ -12,6 +12,7 @@ import {
   TextField,
 } from "@heroui/react";
 import { GrGoogle } from "react-icons/gr";
+import { toast } from "react-toastify";
 
 export default function SignInPage() {
   const onSubmit = async (e) => {
@@ -26,16 +27,45 @@ export default function SignInPage() {
       callbackURL: "/",
     });
 
+    if (error) {
+      toast.error("Invalid email or password. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+      return;
+    }
+
+    if (data) {
+      toast.success("Welcome back! Successfully signed in.", {
+        position: "top-right",
+        autoClose: 5000,
+        theme: "colored",
+      });
+    }
+
     console.log({ data, error });
   };
 
   const handlGoogleSignIn = async () => {
-    await authClient.signIn.social({
-        provider: 'google'
-    })
-  }
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+      });
 
-
+      toast.success("Redirecting to Google sign in...", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+    } catch (error) {
+      toast.error("Google sign in failed. Try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+    }
+  };
 
   return (
     <Card className="border mx-auto w-125 py-10 mt-5">
@@ -50,7 +80,6 @@ export default function SignInPage() {
             if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
               return "Please enter a valid email address";
             }
-
             return null;
           }}
         >
@@ -74,7 +103,6 @@ export default function SignInPage() {
             if (!/[0-9]/.test(value)) {
               return "Password must contain at least one number";
             }
-
             return null;
           }}
         >
@@ -99,7 +127,13 @@ export default function SignInPage() {
 
       <p className="text-center">Or</p>
 
-      <Button onClick={handlGoogleSignIn} variant="outline" className={'w-full'}><GrGoogle/> Sign In With Google</Button>
+      <Button
+        onClick={handlGoogleSignIn}
+        variant="outline"
+        className={"w-full"}
+      >
+        <GrGoogle /> Sign In With Google
+      </Button>
     </Card>
   );
 }

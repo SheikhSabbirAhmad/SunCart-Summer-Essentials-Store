@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { HiMenu } from "react-icons/hi";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const userData = authClient.useSession();
@@ -16,7 +17,21 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const handleSignOut = async () => {
-    await authClient.signOut();
+    try {
+      await authClient.signOut();
+
+      toast.success("You have been logged out successfully.", {
+        position: "top-right",
+        autoClose: 2000,
+        theme: "colored",
+      });
+    } catch (error) {
+      toast.error("Logout failed. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+    }
   };
 
   const navLinks = [
