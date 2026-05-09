@@ -1,4 +1,5 @@
 "use client";
+
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
@@ -11,8 +12,12 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import Link from "next/link";
 import { GrGoogle } from "react-icons/gr";
 import { toast } from "react-toastify";
+
+import Lottie from "lottie-react";
+import animationData from "@/lottie/summer.json";
 
 export default function SignInPage() {
   const onSubmit = async (e) => {
@@ -68,72 +73,98 @@ export default function SignInPage() {
   };
 
   return (
-    <Card className="border mx-auto w-125 py-10 mt-5">
-      <h1 className="text-center text-2xl font-bold">Sign In</h1>
+    <div className="flex items-center justify-center gap-10 mt-10 flex-wrap">
+      
+      {/* Lottie Animation */}
+      <div className="w-[400px]">
+        <Lottie animationData={animationData} loop={true} />
+      </div>
 
-      <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
-        <TextField
-          isRequired
-          name="email"
-          type="email"
-          validate={(value) => {
-            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-              return "Please enter a valid email address";
-            }
-            return null;
-          }}
+      {/* Sign In Card */}
+      <Card className="border mx-auto w-125 py-10 px-6">
+        <h1 className="text-center text-2xl font-bold">Login Now</h1>
+
+        <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
+          <TextField
+            isRequired
+            name="email"
+            type="email"
+            validate={(value) => {
+              if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
+              ) {
+                return "Please enter a valid email address";
+              }
+              return null;
+            }}
+          >
+            <Label>Email</Label>
+            <Input placeholder="john@example.com" />
+            <FieldError />
+          </TextField>
+
+          <TextField
+            isRequired
+            minLength={8}
+            name="password"
+            type="password"
+            validate={(value) => {
+              if (value.length < 8) {
+                return "Password must be at least 8 characters";
+              }
+              if (!/[A-Z]/.test(value)) {
+                return "Password must contain at least one uppercase letter";
+              }
+              if (!/[0-9]/.test(value)) {
+                return "Password must contain at least one number";
+              }
+              return null;
+            }}
+          >
+            <Label>Password</Label>
+
+            <Input placeholder="Enter your password" />
+
+            <Description>
+              Must be at least 8 characters with 1 uppercase and 1 number
+            </Description>
+
+            <FieldError />
+          </TextField>
+
+          <div className="flex gap-2">
+            <Button type="submit">
+              <Check />
+              Submit
+            </Button>
+
+            <Button type="reset" variant="secondary">
+              Reset
+            </Button>
+          </div>
+        </Form>
+
+        <p className="text-center my-3">Or</p>
+
+        <Button
+          onClick={handlGoogleSignIn}
+          variant="outline"
+          className={"w-full"}
         >
-          <Label>Email</Label>
-          <Input placeholder="john@example.com" />
-          <FieldError />
-        </TextField>
+          <GrGoogle /> Sign In With Google
+        </Button>
 
-        <TextField
-          isRequired
-          minLength={8}
-          name="password"
-          type="password"
-          validate={(value) => {
-            if (value.length < 8) {
-              return "Password must be at least 8 characters";
-            }
-            if (!/[A-Z]/.test(value)) {
-              return "Password must contain at least one uppercase letter";
-            }
-            if (!/[0-9]/.test(value)) {
-              return "Password must contain at least one number";
-            }
-            return null;
-          }}
-        >
-          <Label>Password</Label>
-          <Input placeholder="Enter your password" />
-          <Description>
-            Must be at least 8 characters with 1 uppercase and 1 number
-          </Description>
-          <FieldError />
-        </TextField>
-
-        <div className="flex gap-2">
-          <Button type="submit">
-            <Check />
-            Submit
-          </Button>
-          <Button type="reset" variant="secondary">
-            Reset
-          </Button>
-        </div>
-      </Form>
-
-      <p className="text-center">Or</p>
-
-      <Button
-        onClick={handlGoogleSignIn}
-        variant="outline"
-        className={"w-full"}
-      >
-        <GrGoogle /> Sign In With Google
-      </Button>
-    </Card>
+        {/* Register Link */}
+        <p className="text-center mt-5 text-[18px]">
+          Don't Have An Account ?{" "}
+          <Link
+            href="/signup"
+            className="text-blue-500 font-medium hover:underline"
+          >
+            Register
+          </Link>
+        </p>
+      </Card>
+    </div>
   );
 }
