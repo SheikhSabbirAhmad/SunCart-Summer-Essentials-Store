@@ -191,7 +191,6 @@ export default function SignUpPage() {
           </div>
         </Form>
 
-        {/* Already Have Account */}
         <p className="text-left mt-5 text-lg">
           Already Have An Account ?{" "}
           <Link

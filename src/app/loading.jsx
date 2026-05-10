@@ -12,7 +12,7 @@ export default function Loading() {
       />
 
       <p className="text-gray-500 text-sm">
-        Please wait while we load the products
+        Please wait while we load the products...
       </p>
 
     </div>

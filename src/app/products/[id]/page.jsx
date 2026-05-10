@@ -22,7 +22,6 @@ const ProductDetailsPage = async ({ params }) => {
     <div className="max-w-4xl mx-auto p-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-        {/* Image */}
         <Image
           src={product.image}
           alt={product.name}
@@ -31,7 +30,6 @@ const ProductDetailsPage = async ({ params }) => {
           className="w-full rounded-xl"
         />
 
-        {/* Details */}
         <div>
           <h1 className="text-3xl font-bold">{product.name}</h1>
 
