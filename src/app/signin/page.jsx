@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
@@ -20,11 +21,12 @@ import Lottie from "lottie-react";
 import animationData from "@/lottie/summer.json";
 
 export default function SignInPage() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    const email = e.target.email.value;
-    const password = e.target.password.value;
 
     const { data, error } = await authClient.signIn.email({
       email,
@@ -42,6 +44,11 @@ export default function SignInPage() {
     }
 
     if (data) {
+      setEmail("");
+      setPassword("");
+
+      e.target.reset();
+
       toast.success("Welcome back! Successfully signed in.", {
         position: "top-right",
         autoClose: 5000,
@@ -84,7 +91,11 @@ export default function SignInPage() {
       <Card className="border mx-auto w-125 py-10 px-6">
         <h1 className="text-center text-2xl font-bold">Login Now</h1>
 
-        <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
+        <Form
+          autoComplete="off"
+          className="flex w-96 mx-auto flex-col gap-4"
+          onSubmit={onSubmit}
+        >
           <TextField
             isRequired
             name="email"
@@ -99,7 +110,14 @@ export default function SignInPage() {
             }}
           >
             <Label>Email</Label>
-            <Input placeholder="john@example.com" />
+
+            <Input
+              autoComplete="off"
+              placeholder="john@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
             <FieldError />
           </TextField>
 
@@ -123,7 +141,12 @@ export default function SignInPage() {
           >
             <Label>Password</Label>
 
-            <Input placeholder="Enter your password" />
+            <Input
+              autoComplete="new-password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
             <Description>
               Must be at least 8 characters with 1 uppercase and 1 number
@@ -138,7 +161,14 @@ export default function SignInPage() {
               Submit
             </Button>
 
-            <Button type="reset" variant="secondary">
+            <Button
+              type="reset"
+              variant="secondary"
+              onClick={() => {
+                setEmail("");
+                setPassword("");
+              }}
+            >
               Reset
             </Button>
           </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
@@ -24,13 +25,13 @@ import animationData from "@/lottie/summer.json";
 export default function SignUpPage() {
   const router = useRouter();
 
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    const name = e.target.name.value;
-    const image = e.target.image.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
 
     const { data, error } = await authClient.signUp.email({
       name,
@@ -51,6 +52,12 @@ export default function SignUpPage() {
     }
 
     if (data) {
+
+      setName("");
+      setImage("");
+      setEmail("");
+      setPassword("");
+
       toast.success(
         "Account created successfully! Redirecting to sign in...",
         {
@@ -106,19 +113,29 @@ export default function SignUpPage() {
         >
           <TextField isRequired name="name" type="text">
             <Label>Name</Label>
+
             <Input
+              autoComplete="name"
               placeholder="Enter your name"
               className="rounded-full"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
+
             <FieldError />
           </TextField>
 
           <TextField isRequired name="image" type="text">
             <Label>Image URL</Label>
+
             <Input
+              autoComplete="off"
               placeholder="Enter your Photo Url"
               className="rounded-full"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
             />
+
             <FieldError />
           </TextField>
 
@@ -138,8 +155,11 @@ export default function SignUpPage() {
             <Label>Email</Label>
 
             <Input
+              autoComplete="email"
               placeholder="john@example.com"
               className="rounded-full"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <FieldError />
@@ -169,8 +189,11 @@ export default function SignUpPage() {
             <Label>Password</Label>
 
             <Input
+              autoComplete="new-password"
               placeholder="Enter your password"
               className="rounded-full"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
 
             <Description>
